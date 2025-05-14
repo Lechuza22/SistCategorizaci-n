@@ -15,8 +15,8 @@ VECTOR_DIR = "vectorstore"
 # Si no existe el índice FAISS, lo genera automáticamente
 if not os.path.exists(VECTOR_DIR):
     st.warning("⚠️ No se encontró el índice FAISS. Generándolo automáticamente...")
-    docs = load_documents()
-    if docs:
+    documents = load_documents()
+    if documents:
         create_vectorstore(documents)
         st.success("✅ Índice generado con éxito.")
     else:
@@ -30,9 +30,9 @@ if pregunta:
         fragmentos = buscar_documentos_relevantes(pregunta)
 
     st.subheader("📄 Fragmentos relevantes encontrados:")
-    for i, doc in enumerate(fragmentos, 1):
+    for i, documents in enumerate(fragmentos, 1):
         st.markdown(f"**Fragmento #{i}:**")
-        st.info(doc.page_content)
+        st.info(documents.page_content)
 
     with st.spinner("✍️ Generando respuesta..."):
         respuesta = generar_respuesta_con_llm(pregunta, fragmentos, modelo="gemini")
