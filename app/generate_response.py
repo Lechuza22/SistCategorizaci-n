@@ -1,7 +1,7 @@
 # app/generate_response.py
 
 import google.generativeai as genai
-from app.config import GEMINI_API_KEY
+from config import GEMINI_API_KEY
 
 genai.configure(api_key="AIzaSyDN-qxuXqr6wt1Ca5P2h7PjCw__KK2E9os")
 
