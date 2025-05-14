@@ -17,7 +17,7 @@ if not os.path.exists(VECTOR_DIR):
     st.warning("⚠️ No se encontró el índice FAISS. Generándolo automáticamente...")
     docs = load_documents()
     if docs:
-        create_vectorstore(docs)
+        create_vectorstore(documents)
         st.success("✅ Índice generado con éxito.")
     else:
         st.error("❌ No se encontraron documentos en /data/documentos_raw/.")
