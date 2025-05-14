@@ -5,5 +5,5 @@ python-dotenv
 pypdf
 tiktoken
 google-generativeai
-sentence-transformers==2.2.2
 transformers==4.40.0
+sentence-transformers==2.2.2
