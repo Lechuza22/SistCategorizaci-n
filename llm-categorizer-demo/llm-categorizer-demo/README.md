@@ -1,18 +1,16 @@
-# 🧱 LLM Categorizer Demo
+# 🧱 LLM Categorizer Demo (Gemini + Hugging Face)
 
-Este proyecto es una **demo funcional** de un sistema inteligente que procesa preguntas de usuarios, **las categoriza automáticamente**, **busca documentos relevantes** y **genera respuestas** usando un modelo de lenguaje como GPT-4.
-
-Fue desarrollado como **proyecto personal** y sirve como referencia para soluciones conversacionales en sectores como construcción, educación, soporte técnico, entre otros.
+Este proyecto es una **demo funcional** de un sistema inteligente que procesa preguntas de usuarios, **busca documentos relevantes** y **genera respuestas** usando un modelo de lenguaje (Gemini Pro) y búsqueda semántica con embeddings de Hugging Face.
 
 ---
 
 ## 🚀 ¿Qué hace esta aplicación?
 
 1. Carga documentos en texto o PDF.
-2. Fragmenta y vectoriza el contenido usando **FAISS** y **OpenAI embeddings**.
+2. Fragmenta y vectoriza el contenido usando **FAISS** y **Hugging Face embeddings**.
 3. Acepta preguntas de usuarios.
 4. Recupera los fragmentos más relevantes con búsqueda semántica.
-5. Construye un prompt con contexto y lo envía al **LLM (GPT-4)**.
+5. Construye un prompt con contexto y lo envía al **modelo Gemini**.
 6. Devuelve una respuesta clara y contextualizada al usuario.
 
 ---
@@ -23,7 +21,8 @@ Fue desarrollado como **proyecto personal** y sirve como referencia para solucio
 - [Streamlit](https://streamlit.io/)
 - [LangChain](https://www.langchain.com/)
 - [FAISS](https://github.com/facebookresearch/faiss)
-- [OpenAI API](https://platform.openai.com/)
+- [Hugging Face Transformers](https://huggingface.co/)
+- [Google Generative AI (Gemini)](https://makersuite.google.com/)
 - [dotenv](https://pypi.org/project/python-dotenv/)
 
 ---
@@ -37,11 +36,11 @@ llm-categorizer-demo/
 │   ├── config.py              # Clave API
 │   ├── generate_embeddings.py # Carga y vectorización de documentos
 │   ├── search_documents.py    # Búsqueda semántica con FAISS
-│   └── generate_response.py   # Generación de respuesta con GPT
+│   └── generate_response.py   # Generación de respuesta con Gemini
 ├── data/
 │   └── documentos_raw/        # Tus archivos .txt o .pdf
 ├── vectorstore/               # Índice FAISS generado
-├── .env                       # Clave API privada
+├── .env.example               # Archivo de ejemplo para configuración
 ├── requirements.txt
 └── README.md
 ```
@@ -63,12 +62,12 @@ cd llm-categorizer-demo
 pip install -r requirements.txt
 ```
 
-### 3. Configurá la clave de OpenAI
+### 3. Configurá la clave de Gemini
 
 Crea un archivo `.env` en la raíz con:
 
 ```env
-OPENAI_API_KEY=sk-tu-clave-aqui
+GEMINI_API_KEY=tu_clave_de_gemini
 ```
 
 ### 4. Colocá documentos en la carpeta
@@ -98,7 +97,7 @@ streamlit run app/main.py
 1. Subí un archivo `.txt` con contenido técnico.
 2. Hacé una consulta desde la interfaz.
 3. El sistema buscará los fragmentos más relevantes.
-4. El modelo generará una respuesta basada en los documentos.
+4. El modelo Gemini generará una respuesta basada en los documentos.
 
 ---
 
@@ -117,9 +116,8 @@ streamlit run app/main.py
 
 Desarrollado por [Jerónimo Martínez](https://www.linkedin.com/in/jeronimo-martinez/), Data Scientist especializado en soluciones aplicadas con IA.
 
+---
 
-## 🌐 DEMO en Vivo
+## 📄 Licencia
 
-Probá la aplicación funcionando en:
-
-👉 [Streamlit Cloud](https://llm-categorizer-demo.streamlit.app)
+Este proyecto se publica bajo la licencia MIT.
