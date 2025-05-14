@@ -2,7 +2,7 @@ import os
 import streamlit as st
 
 from search_docs import buscar_documentos_relevantes
-from generate_response import generar_respuesta_con_llm
+from generate_response import generar_respuesta_con_gemini
 from generate_embeddings import create_vectorstore, load_documents
 
 st.set_page_config(page_title="🧠 LLM Categorizer Demo", layout="centered")
