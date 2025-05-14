@@ -2,7 +2,7 @@
 
 import streamlit as st
 from app.search_documents import buscar_documentos_relevantes
-from app.generate_response import generar_respuesta_con_llm
+from app.generate_response import generar_respuesta_con_gemini
 
 st.set_page_config(page_title="🧠 LLM Categorizer Demo", layout="centered")
 
@@ -21,7 +21,7 @@ if pregunta:
         st.info(doc.page_content)
 
     with st.spinner("✍️ Generando respuesta con Gemini..."):
-        respuesta = generar_respuesta_con_llm(pregunta, fragmentos, modelo="gemini")
+        respuesta = generar_respuesta_con_gemini(pregunta, fragmentos, modelo="gemini")
 
     st.subheader("📌 Respuesta generada:")
     st.success(respuesta)
