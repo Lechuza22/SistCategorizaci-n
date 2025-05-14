@@ -1,15 +1,13 @@
-# app/main.py
-
+import streamlit as st
 from search_docs import buscar_documentos_relevantes
 from generate_response import generar_respuesta_con_llm
-from config import GEMINI_API_KEY
-
 
 st.set_page_config(page_title="🧠 LLM Categorizer Demo", layout="centered")
 
 st.title("🧱 LLM Categorizer Demo")
-st.write("Esta demo utiliza el modelo Gemini Pro para generar respuestas basadas en documentos.")
+st.write("Esta demo utiliza Gemini para generar respuestas a partir de documentos cargados.")
 
+# Input del usuario
 pregunta = st.text_input("🔍 Ingresá tu consulta:")
 
 if pregunta:
@@ -21,8 +19,8 @@ if pregunta:
         st.markdown(f"**Fragmento #{i}:**")
         st.info(doc.page_content)
 
-    with st.spinner("✍️ Generando respuesta con Gemini..."):
-        respuesta = generar_respuesta_con_gemini(pregunta, fragmentos, modelo="gemini")
+    with st.spinner("✍️ Generando respuesta..."):
+        respuesta = generar_respuesta_con_llm(pregunta, fragmentos, modelo="gemini")
 
     st.subheader("📌 Respuesta generada:")
     st.success(respuesta)
