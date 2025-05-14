@@ -1,0 +1,8 @@
+streamlit
+langchain
+faiss-cpu
+python-dotenv
+google-generativeai
+pypdf
+tiktoken
+unstructured   # para parsear PDFs
