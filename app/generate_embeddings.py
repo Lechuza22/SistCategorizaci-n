@@ -30,10 +30,6 @@ def create_vectorstore(documents):
 
     try:
         embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl", model_kwargs={"device": "cpu"})
-    except ImportError as e:
-        raise ImportError(
-            "[!] No se pudo cargar HuggingFaceEmbeddings. Asegurate de tener 'sentence-transformers' instalado correctamente."
-        ) from e
 
     vectorstore = FAISS.from_documents(chunks, embeddings)
     vectorstore.save_local(VECTOR_DIR)
