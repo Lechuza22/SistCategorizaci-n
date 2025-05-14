@@ -3,7 +3,7 @@
 import os
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
-from langchain.embeddings import HuggingFaceEmbeddings
+from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.document_loaders import TextLoader, PyPDFLoader
 
 DATA_DIR = "data/documentos_raw"
@@ -29,7 +29,7 @@ def create_vectorstore(documents):
     chunks = splitter.split_documents(documents)
 
     try:
-        embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+        embeddings = HuggingFaceInstructEmbeddings(model_name="hkunlp/instructor-xl", model_kwargs={"device": "cpu"})
     except ImportError as e:
         raise ImportError(
             "[!] No se pudo cargar HuggingFaceEmbeddings. Asegurate de tener 'sentence-transformers' instalado correctamente."
