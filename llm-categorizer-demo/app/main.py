@@ -1,8 +1,9 @@
 # app/main.py
 
-import streamlit as st
 from search_docs import buscar_documentos_relevantes
-from generate_response import generar_respuesta_con_gemini
+from generate_response import generar_respuesta_con_llm
+from config import GEMINI_API_KEY
+
 
 st.set_page_config(page_title="🧠 LLM Categorizer Demo", layout="centered")
 
