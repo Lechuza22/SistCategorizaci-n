@@ -3,9 +3,8 @@
 import os
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import FAISS
-from langchain.embeddings import OpenAIEmbeddings
+from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.document_loaders import TextLoader, PyPDFLoader
-from app.config import GEMINI_API_KEY
 
 DATA_DIR = "data/documentos_raw"
 VECTOR_DIR = "vectorstore"
@@ -28,7 +27,8 @@ def load_documents():
 def create_vectorstore(documents):
     splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
     chunks = splitter.split_documents(documents)
-    embeddings = OpenAIEmbeddings(openai_api_key=OPENAI_API_KEY)
+
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
     vectorstore = FAISS.from_documents(chunks, embeddings)
     vectorstore.save_local(VECTOR_DIR)
     print(f"[✓] Vectorstore guardado en '{VECTOR_DIR}'")
