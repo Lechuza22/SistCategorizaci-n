@@ -35,7 +35,7 @@ if pregunta:
         st.info(documents.page_content)
 
     with st.spinner("✍️ Generando respuesta..."):
-        respuesta = generar_respuesta_con_llm(pregunta, fragmentos, modelo="gemini")
+        respuesta = generar_respuesta_con_gemini(pregunta, fragmentos, modelo="gemini")
 
     st.subheader("📌 Respuesta generada:")
     st.success(respuesta)
