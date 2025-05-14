@@ -30,4 +30,3 @@ def generar_respuesta_con_gemini(pregunta, fragmentos):
 
 
 
-AIzaSyDN-qxuXqr6wt1Ca5P2h7PjCw__KK2E9os
