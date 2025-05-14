@@ -28,7 +28,13 @@ def create_vectorstore(documents):
     splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
     chunks = splitter.split_documents(documents)
 
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    try:
+        embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    except ImportError as e:
+        raise ImportError(
+            "[!] No se pudo cargar HuggingFaceEmbeddings. Asegurate de tener 'sentence-transformers' instalado correctamente."
+        ) from e
+
     vectorstore = FAISS.from_documents(chunks, embeddings)
     vectorstore.save_local(VECTOR_DIR)
     print(f"[✓] Vectorstore guardado en '{VECTOR_DIR}'")
