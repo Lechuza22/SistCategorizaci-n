@@ -1,9 +1,9 @@
-langchain
-faiss-cpu
 streamlit
+langchain==0.1.14
+faiss-cpu
 python-dotenv
 pypdf
 tiktoken
 google-generativeai
-sentence-transformers
-transformers
+transformers==4.40.0
+sentence-transformers==2.2.2
