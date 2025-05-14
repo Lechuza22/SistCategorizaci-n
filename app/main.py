@@ -30,12 +30,12 @@ if pregunta:
         fragmentos = buscar_documentos_relevantes(pregunta)
 
     st.subheader("📄 Fragmentos relevantes encontrados:")
-    for i, documents in enumerate(fragmentos, 1):
+    for i, doc in enumerate(fragmentos, 1):
         st.markdown(f"**Fragmento #{i}:**")
-        st.info(documents.page_content)
+        st.info(doc.page_content)
 
     with st.spinner("✍️ Generando respuesta..."):
-        respuesta = generar_respuesta_con_gemini(pregunta, fragmentos, modelo="gemini")
+        respuesta = generar_respuesta_con_gemini(pregunta, fragmentos)
 
     st.subheader("📌 Respuesta generada:")
     st.success(respuesta)
